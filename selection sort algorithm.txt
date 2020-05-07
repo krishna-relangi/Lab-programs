@@ -1,0 +1,30 @@
+#include<stdio.h> 
+int main(){ 
+   int a, b, calculate, temp, num[20]; 
+ 
+   printf("Enter numbers of elements you want : "); 
+   scanf("%d",&calculate); 
+ 
+   printf("Enter %d elements: ", calculate); 
+   // Loop to get the elements stored in array 
+   for(a=0;a<calculate;a++) 
+      scanf("%d",&num[a]); 
+  
+   // Logic of selection sort algorithm 
+   for(a=0;a<calculate;a++){ 
+      for(b=a+1;b<calculate;b++){ 
+         if(num[a]>num[b]){ 
+            temp=num[a]; 
+            num[a]=num[b]; 
+            num[b]=temp; 
+         } 
+      } 
+   } 
+ 
+   printf("Sorted elements are: "); 
+   for(a=0;a<calculate;a++) 
+      printf(" %d",num[a]); 
+ 
+   return 0; 
+} 
+ 
