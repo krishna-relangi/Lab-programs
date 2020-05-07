@@ -1,0 +1,64 @@
+#include<stdio.h> 
+ 
+void merge(int l[],int a1,int b1,int a2,int b2); 
+void mergesort(int l[],int i,int j); 
+ 
+  
+int main() 
+{ 
+ int l[20],n,i; 
+ printf("Enter no of elements:"); 
+ scanf("%d",&n); 
+ printf("Enter array elements:"); 
+  
+ for(i=0;i<n;i++) 
+  scanf("%d",&l[i]); 
+   
+ mergesort(l,0,n-1); 
+  
+ printf("\nSorted array is :"); 
+ for(i=0;i<n;i++) 
+  printf("%d ",l[i]); 
+   
+ return 0; 
+} 
+  
+void mergesort(int l[],int i,int j) 
+{ 
+ int mid; 
+   
+ if(i<j) 
+ { 
+  mid=(i+j)/2; 
+  mergesort(l,i,mid);  
+  mergesort(l,mid+1,j); 
+  merge(l,i,mid,mid+1,j); 
+ } 
+} 
+  
+void merge(int l[],int a1,int b1,int a2,int b2) 
+{ 
+ int temp[50];  
+ int i,j,k; 
+ i=a1;   
+ j=a2;  
+ k=0; 
+  
+ while(i<=b1 && j<=b2) 
+ { 
+  if(l[i]<l[j]) 
+   temp[k++]=l[i++]; 
+  else 
+   temp[k++]=l[j++]; 
+ } 
+  
+ while(i<=b1)  
+  temp[k++]=l[i++]; 
+   
+ while(j<=b2)  
+  temp[k++]=l[j++]; 
+   
+ //Transfer elements from temp[] back to a[] 
+ for(i=a1,j=0;i<=b2;i++,j++) 
+  l[i]=temp[j]; 
+} 
