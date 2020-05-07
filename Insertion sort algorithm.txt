@@ -1,0 +1,30 @@
+#include<stdio.h> 
+int main(){ 
+   int a, b, calculate, temp, num[20]; 
+ 
+   printf("Enter how many numbers you want to insert: "); 
+   scanf("%d",&calculate); 
+ 
+   printf("Enter %d elements: ", calculate); 
+   // This loop  stores the input numbers in array 
+   for(a=0;a<calculate;a++) 
+      scanf("%d",&num[a]); 
+ 
+   // Implementation of insertion sort algorithm 
+   for(a=1;a<calculate;a++){ 
+      temp=num[a]; 
+      b=a-1; 
+      while((temp<num[b])&&(b>=0)){ 
+         num[b+1]=num[b]; 
+         b=b-1; 
+      } 
+      num[b+1]=temp; 
+   } 
+ 
+   printf("Order of Sorted elements: "); 
+   for(a=0;a<calculate;a++) 
+      printf(" %d",num[a]); 
+ 
+   return 0; 
+} 
+ 
