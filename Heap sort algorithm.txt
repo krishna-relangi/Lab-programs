@@ -1,0 +1,54 @@
+#include <stdio.h> 
+  
+void main() 
+{ 
+    int heapsort[20], d, a, b, c, root, swap; 
+  
+    printf("\n Enter number of elements :"); 
+    scanf("%d", &d); 
+    printf("\n Enter the numbers : "); 
+    for (a = 0; a < d; a++) 
+       scanf("%d", &heapsort[a]); 
+    for (a = 1; a < d; a++) 
+    { 
+        c = a; 
+        do 
+        { 
+            root = (c - 1) / 2;              
+            if (heapsort[root] < heapsort[c])    
+            { 
+                swap = heapsort[root]; 
+                heapsort[root] = heapsort[c]; 
+                heapsort[c] = swap; 
+            } 
+            c = root; 
+        } while (c != 0); 
+    } 
+  
+    printf("Heap array : "); 
+    for (a = 0; a < d; a++) 
+        printf("%d\t ", heapsort[a]); 
+    for (b = d - 1; b >= 0; b--) 
+    { 
+        swap = heapsort[0]; 
+        heapsort[0] = heapsort[b];     
+        heapsort[b] = swap; 
+        root = 0; 
+        do  
+        { 
+            c = 2 * root + 1;    /* left node of root element */ 
+            if ((heapsort[c] < heapsort[c + 1]) && c < b-1) 
+                c++; 
+            if (heapsort[root]<heapsort[c] && c<b)    
+            { 
+                swap = heapsort[root]; 
+                heapsort[root] = heapsort[c]; 
+                heapsort[c] = swap; 
+            } 
+            root = c; 
+        } while (c < b); 
+    ;} 
+    printf("\n The sorted array is : "); 
+    for (a = 0; a < d; a++) 
+       printf("\t %d", heapsort[a]); 
+} 
